@@ -1,0 +1,16 @@
+.loader-overlay {
+	--loader-size: 50px;
+	--loader-width: 5px;
+	--loader-color: #c4c4c4;
+
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100vw;
+	height: 100vh;
+	background-color: rgb(0, 0, 0, 0.5);
+	z-index: 1000;
+}

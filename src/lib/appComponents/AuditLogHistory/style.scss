@@ -1,0 +1,99 @@
+.audit-log-history {
+	display: flex;
+	margin: 10px 0px;
+
+	:global(i) {
+		color: black;
+		line-height: inherit;
+	}
+
+	:global(.accordian) {
+		width: 100%;
+	}
+	&__header {
+		font-size: 20px;
+		color: black;
+		font-weight: 450;
+		margin-bottom: 14px;
+	}
+	&__container {
+		width: 100%;
+	}
+}
+
+.audit-log {
+	&-loader {
+		text-align: center;
+	}
+	&__entry {
+		display: flex;
+		align-items: center;
+		gap: 18px;
+		margin-bottom: 0.5em;
+		font-size: 15px;
+		color: black;
+		align-items: baseline;
+	}
+	&__subentry {
+		font-size: 15px;
+		color: black;
+		margin-bottom: 0.5em;
+		display: flex;
+		gap: 18px;
+	}
+	&__title {
+		margin-bottom: 0.5em;
+	}
+	&__date {
+		font-weight: 300;
+		min-width: 55px;
+	}
+	&__triggered-by {
+		color: #999999;
+	}
+	&__text-blue,
+	&__new-value {
+		color: #007aff;
+	}
+	&__old-value {
+		color: #ff3b30;
+	}
+	&__text-red {
+		color: rgba(220, 20, 60);
+	}
+	&__year {
+		color: #999999;
+		font-weight: 600;
+		font-size: 15px;
+		margin-bottom: 0.5em;
+	}
+	.badge {
+		padding: 0px;
+		color: black;
+		border-radius: 10px;
+		font-size: 14px;
+		min-width: 70px;
+		text-align: center;
+		margin-right: 8px;
+
+		&--insert {
+			background-color: rgba(0, 122, 255, 0.4);
+		}
+
+		&--update {
+			background-color: rgba(255, 152, 0, 0.4);
+		}
+
+		&--delete {
+			background-color: rgba(220, 20, 60, 0.4);
+		}
+
+		&--merge {
+			background-color: rgba(76, 175, 80, 0.4);
+		}
+	}
+}
+
+.update-group {
+	margin-bottom: 0em;
+}

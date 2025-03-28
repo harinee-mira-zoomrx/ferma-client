@@ -1,0 +1,52 @@
+.edited-values {
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    flex-direction: column;
+    width: 100%;
+    gap: 5px;
+
+    &__section {
+        padding: 10px 0;
+    }
+    &__title {
+        font-size: 16px;
+        font-weight: bold;
+        padding-top: 10px;
+    }
+    &__section_label {
+        font-size: 15px;
+        font-weight: bold;
+        padding-top: 10px;
+    }
+    &__container {
+        display: flex;
+        align-items: flex-start;
+        justify-content: flex-start;
+        width: 100%;
+        gap: 10px;
+    }
+    &__actions {
+        align-self: flex-end;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 20px;
+    }
+    &__header_label {
+        font-size: 16px;
+        padding: 0 5px 0 0;
+    }
+    &__label {
+        display: flex;
+        white-space: nowrap;
+    }
+    .inserted {
+        margin: 0 5px;
+        background: #dbffdb;
+    }
+    .deleted {
+        margin: 0 5px;
+        background: #ffd9d9;
+    }
+}

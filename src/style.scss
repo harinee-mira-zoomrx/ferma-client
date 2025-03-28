@@ -1,0 +1,85 @@
+@use '@material/icon-button/styles';
+
+*,
+*::after,
+*::before {
+	margin: 0;
+	padding: 0;
+}
+
+html,
+body,
+#app {
+	min-height: 100%;
+	width: 100%;
+	font-family: 'Nunito Sans', sans-serif;
+	font-size: 16px;
+	color: #565656;
+}
+.mdc-data-table {
+	max-height: 550px;
+}
+.mdc-data-table__table {
+	thead {
+		position: sticky;
+		top: 0px;
+		z-index: 1;
+		background: #fff;
+	}
+}
+.mdc-data-table__header-row:first-child .mdc-data-table__header-cell {
+	border-bottom: 0;
+}
+.landscape {
+	.mdc-data-table__header-row:first-child .mdc-data-table__header-cell {
+		border-bottom: 1px solid #d8dbdf;
+	}
+}
+.mdc-data-table__cell,
+.mdc-data-table__header-cell {
+	font-size: 14px;
+	text-align: left;
+}
+.mdc-data-table__header-cell-wrapper {
+	width: 100%;
+	--width: 100%;
+}
+.mdc-data-table__cell {
+	padding: 5px 16px;
+}
+.mdc-icon-button:not(.pagination-icon) {
+	font-size: 16px;
+	height: 32px;
+	box-sizing: border-box;
+	width: 32px;
+}
+.mdc-data-table__header-row,
+.mdc-data-table__row {
+	height: 40px;
+}
+.mdc-icon-button.expand-icon {
+	margin-left: auto;
+	font-size: 22px;
+}
+.mdc-icon-button.header-back-btn-icon {
+	padding: 0;
+	width: 16px;
+}
+.mdc-icon-button--disabled {
+	pointer-events: none;
+	color: rgba(0, 0, 0, 0.15);
+}
+.datatable--center {
+	text-align: center;
+}
+.datatable__pagination--hidden {
+	display: none;
+}
+@import '@smui/data-table/bare.css';
+
+:root {
+	--primary-color: #0161ee;
+	--primary-color-lite: #0160ee99;
+	--negative-color: #DE350B;
+	--negative-color-lite: #d1745d;
+}

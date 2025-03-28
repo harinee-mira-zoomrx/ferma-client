@@ -1,0 +1,125 @@
+.loader {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	position: absolute;
+	top: 0;
+	left: 0;
+	height: 100%;
+	width: 100%;
+	background: rgb(0, 0, 0, 0.07);
+}
+.datatable {
+	display: flex;
+	flex-direction: column;
+	gap: 10px;
+
+	&__header {
+		--input-border-radius: 16px;
+
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		width: 100%;
+		gap: 30px;
+	}
+	&__header-search-input {
+		width: 100%;
+		:global(.input) {
+			width: 100%;
+		}
+	}
+	&__header__buttons {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		gap: 10px;
+	}
+
+	.toggle-column {
+		position: relative;
+
+		&__container {
+			position: absolute;
+			top: 35px;
+			right: 0;
+			z-index: 1000;
+			display: flex;
+			width: max-content;
+			align-items: flex-start;
+			gap: 10px;
+			flex-direction: column;
+			background: #fff;
+			border: 1px solid #d8dbdf;
+			border-radius: 10px;
+			padding: 10px;
+		}
+		&__row {
+			display: flex;
+			align-items: center;
+			justify-content: flex-start;
+			gap: 10px;
+		}
+	}
+
+	&__content {
+		:global(input) {
+			width: 100%;
+			height: 30px;
+		}
+		:global(.svelte-select) {
+			height: 30px;
+		}
+		:global(.select-box) {
+			--height: 30px;
+			--border-hover: 1px solid #d8dbdf;
+			--border-focused: 1px solid #d8dbdf;
+		}
+		:global(tbody) {
+			position: relative;
+		}
+		.action-btn {
+			&--disabled {
+				cursor: not-allowed;
+			}
+			align-items: center;
+			display: inline-flex;
+			justify-content: center;
+		}
+	}
+
+	.rearrange-column__container:focus {
+		outline: none;
+	}
+
+	.rearrange-column__container {
+		display: flex;
+		flex-direction: column;
+		row-gap: 5px;
+
+		div {
+			transition: all 0.3s ease; /* Smooth transition for all properties */
+
+			/* Hover styles */
+			&:hover {
+				outline: 2px solid #7ddaff;
+				border-radius: 5px;
+				box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+				background-color: #beecff;
+				transform: scale(1.03);
+			}
+		}
+
+		div.dragging {
+			outline: 2px solid #7ddaff;
+			border-radius: 5px;
+			box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+			background-color: #beecff;
+			transform: scale(1.03);
+		}
+	}
+}
+
+:global(.small-font .mdc-data-table__cell, .small-font .mdc-data-table__header-cell) {
+	font-size: 12px;
+}
