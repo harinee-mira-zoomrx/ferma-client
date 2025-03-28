@@ -6,8 +6,12 @@
 	import { push } from 'svelte-spa-router';
 	import { toasts } from '@components/Toast/toasts';
 	import { transformSnakeToCapitalized } from '@utils/utility';
-	import { fetchPreclinicalStudies, GEOGRAPHIES, STUDY_TYPE } from '@models/studies';
+	import { fetchPreclinicalStudies, GEOGRAPHIES } from '@models/studies';
 	import { VERIFICATION_STATUS } from '@utils/constants';
+	import {
+		getRootLinkCellConfig,
+		getRootLinkComponentConfig,
+	} from '@utils/component-utils';
 
 	let columns = [
 		{
@@ -24,8 +28,18 @@
 							{
 								iconName: 'edit',
 								title: 'edit',
-								handler: (row) => {
-									window.open(`#/preclinical-trials/${row.study_id}`, '_blank');
+								handler: (rowData) => {
+									window.open(
+										`#/preclinical-trials/${rowData.study_id}`,
+										'_blank'
+									);
+								},
+							},
+							{
+								iconName: 'unfold_more',
+								title: 'Toggle Full Data',
+								handler: (_, row) => {
+									row.toggleFullView();
 								},
 							},
 						],
@@ -39,6 +53,8 @@
 			enableColumnFilter: true,
 			enableSorting: false,
 			size: 250,
+			meta: { ...getRootLinkComponentConfig() },
+			cell: (cell) => getRootLinkCellConfig(cell),
 		},
 		{
 			accessorKey: 'active_ingredient',
@@ -46,13 +62,17 @@
 			enableColumnFilter: true,
 			enableSorting: false,
 			size: 250,
+			meta: { ...getRootLinkComponentConfig() },
+			cell: (cell) => getRootLinkCellConfig(cell),
 		},
 		{
 			accessorKey: 'drug_combination_regimen',
-			header: 'Drug Combination / Regimen​',
+			header: 'Drug Combination / Regimen',
 			enableColumnFilter: true,
 			enableSorting: false,
 			size: 250,
+			meta: { ...getRootLinkComponentConfig() },
+			cell: (cell) => getRootLinkCellConfig(cell),
 		},
 		{
 			accessorKey: 'drug_class',
@@ -60,6 +80,8 @@
 			enableColumnFilter: true,
 			enableSorting: false,
 			size: 250,
+			meta: { ...getRootLinkComponentConfig() },
+			cell: (cell) => getRootLinkCellConfig(cell),
 		},
 		{
 			accessorKey: 'target',
@@ -67,6 +89,8 @@
 			enableColumnFilter: true,
 			enableSorting: false,
 			size: 250,
+			meta: { ...getRootLinkComponentConfig() },
+			cell: (cell) => getRootLinkCellConfig(cell),
 		},
 		{
 			accessorKey: 'indication',
@@ -81,6 +105,8 @@
 			enableColumnFilter: true,
 			enableSorting: false,
 			size: 250,
+			meta: { ...getRootLinkComponentConfig() },
+			cell: (cell) => getRootLinkCellConfig(cell),
 		},
 		{
 			accessorKey: 'therapy_area',
@@ -88,6 +114,8 @@
 			enableColumnFilter: true,
 			enableSorting: false,
 			size: 250,
+			meta: { ...getRootLinkComponentConfig() },
+			cell: (cell) => getRootLinkCellConfig(cell),
 		},
 		{
 			accessorKey: 'development_phase',
@@ -120,9 +148,6 @@
 			meta: {
 				renderComponent: {
 					component: Link,
-					props: {
-						getHref: (rowData) => rowData.source,
-					},
 				},
 			},
 			size: 250,
@@ -182,11 +207,15 @@
 			columnPinning={{ left: ['_action'] }}
 			sorting={[{ id: 'study_id', desc: true }]}
 			enableGlobalFilter={false}
+			enableFullView={true}
 		>
 			<div slot="table-actions-right">
-				<Button type="secondary" onClick={() => {
-                    push('/preclinical-trials/new')
-                }}>Add Study</Button>
+				<Button
+					type="secondary"
+					onClick={() => {
+						push('/preclinical-trials/new');
+					}}>Add Study</Button
+				>
 			</div>
 		</TanStackTable>
 	</div>

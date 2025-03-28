@@ -5,7 +5,6 @@
 		getFilteredRowModel,
 		getSortedRowModel,
 		getGroupedRowModel,
-		getExpandedRowModel,
 		getPaginationRowModel,
 	} from '@tanstack/svelte-table';
 	import CircularLoader from '@components/CircularLoader/index.svelte';
@@ -13,7 +12,7 @@
 	import { debounce, queryConstructor } from '@utils/utility.js';
 	import TanStackHeader from './TanStackHeader.svelte';
 	import { onMount, tick } from 'svelte';
-	import { DensityFeature } from './TanStackCustomFeatures';
+	import { DensityFeature, ViewFullFeature } from './TanStackCustomFeatures';
 	import TanStackTableHeaderToolbar from './TanStackTableHeaderToolbar.svelte';
 	// @ts-ignore
 	import TanStackPagination from './TanStackPagination.svelte';
@@ -27,15 +26,22 @@
 	export let columnPinning = {};
 	// {id: string,desc: boolean}[]
 	export let sorting = [];
-	export let pagination = { pageIndex: 0, pageSize: 10 };
+	export let pagination = {
+		pageIndex: 0,
+		pageSize: 10,
+	};
 	// {id: string, value: string}[]
 	export let columnFilters = [];
-	export let datasource = { getRows: (params) => {} };
+	export let datasource = {
+		getRows: (params) => {},
+	};
 	export let enableServerSideRowModel = true;
 	export let grouping = [];
 	export let excludeFilterQuery = [];
 	export let enableGlobalFilter = true;
+	export let enableFullView = true;
 	export let configStorageKey = '';
+	export let fullView = new Set();
 	export const refreshDatatable = async () => {
 		await loadData(true, true);
 	};
@@ -130,7 +136,7 @@
 	};
 
 	const options = writable({
-		_features: [DensityFeature],
+		_features: [DensityFeature, ViewFullFeature],
 		data,
 		columns,
 		filterFns: customFilterFns,
@@ -153,8 +159,14 @@
 			density,
 			globalFilter,
 			grouping,
+			fullView,
 		},
-		initialState: { columnPinning, columnFilters, sorting },
+		initialState: {
+			columnPinning,
+			columnFilters,
+			sorting,
+			fullView,
+		},
 		sortDescFirst: true,
 		enableSortingRemoval: false,
 		pageCount: disablePagination ? 1 : -1,
@@ -164,9 +176,9 @@
 		columnResizeMode: 'onChange',
 		enableColumnResizing: true,
 		enableGlobalFilter,
+		enableFullView,
 		getPaginationRowModel: getPaginationRowModel(),
 		getGroupedRowModel: getGroupedRowModel(),
-		getExpandedRowModel: getExpandedRowModel(),
 		getCoreRowModel: getCoreRowModel(),
 		getFilteredRowModel: getFilteredRowModel(),
 		getSortedRowModel: getSortedRowModel(),
@@ -204,6 +216,12 @@
 			globalFilter = globalFilterData;
 			await loadData();
 		}, 450),
+		onFullViewChange: (setFullView) => {
+			fullView =
+				typeof setFullView === 'function'
+					? setFullView(fullView)
+					: setFullView;
+		},
 	});
 
 	$: options.update((opts) => ({
@@ -219,7 +237,9 @@
 			density,
 			globalFilter,
 			grouping,
+			fullView,
 		},
+		enableFullView,
 	}));
 
 	const saveConfig = () => {

@@ -6,12 +6,13 @@
 	import { push } from 'svelte-spa-router';
 	import { toasts } from '@components/Toast/toasts';
 	import { transformSnakeToCapitalized } from '@utils/utility';
-	import {
-		fetchApprovedStudies,
-		GEOGRAPHIES,
-	} from '@models/studies';
+	import { fetchApprovedStudies, GEOGRAPHIES } from '@models/studies';
 	import { VERIFICATION_STATUS } from '@utils/constants';
 	import isEmpty from '@utils/is-empty';
+	import {
+		getRootLinkCellConfig,
+		getRootLinkComponentConfig,
+	} from '@utils/component-utils';
 
 	let columns = [
 		{
@@ -28,11 +29,18 @@
 							{
 								iconName: 'edit',
 								title: 'edit',
-								handler: (row) => {
+								handler: (rowData) => {
 									window.open(
-										`#/approved-studies/${row.study_id}`,
+										`#/approved-studies/${rowData.study_id}`,
 										'_blank'
 									);
+								},
+							},
+							{
+								iconName: 'unfold_more',
+								title: 'Toggle Full Data',
+								handler: (_, row) => {
+									row.toggleFullView();
 								},
 							},
 						],
@@ -46,6 +54,8 @@
 			enableColumnFilter: true,
 			enableSorting: false,
 			size: 250,
+			meta: { ...getRootLinkComponentConfig() },
+			cell: (cell) => getRootLinkCellConfig(cell),
 		},
 		{
 			accessorKey: 'brand',
@@ -53,6 +63,8 @@
 			enableColumnFilter: true,
 			enableSorting: false,
 			size: 250,
+			meta: { ...getRootLinkComponentConfig() },
+			cell: (cell) => getRootLinkCellConfig(cell),
 		},
 		{
 			accessorKey: 'active_ingredient',
@@ -60,6 +72,8 @@
 			enableColumnFilter: true,
 			enableSorting: false,
 			size: 250,
+			meta: { ...getRootLinkComponentConfig() },
+			cell: (cell) => getRootLinkCellConfig(cell),
 		},
 		{
 			accessorKey: 'drug_combination_regimen',
@@ -67,6 +81,8 @@
 			enableColumnFilter: true,
 			enableSorting: false,
 			size: 250,
+			meta: { ...getRootLinkComponentConfig() },
+			cell: (cell) => getRootLinkCellConfig(cell),
 		},
 		{
 			accessorKey: 'drug_class',
@@ -74,6 +90,8 @@
 			enableColumnFilter: true,
 			enableSorting: false,
 			size: 250,
+			meta: { ...getRootLinkComponentConfig() },
+			cell: (cell) => getRootLinkCellConfig(cell),
 		},
 		{
 			accessorKey: 'target',
@@ -81,6 +99,8 @@
 			enableColumnFilter: true,
 			enableSorting: false,
 			size: 250,
+			meta: { ...getRootLinkComponentConfig() },
+			cell: (cell) => getRootLinkCellConfig(cell),
 		},
 		{
 			accessorKey: 'indication',
@@ -95,6 +115,8 @@
 			enableColumnFilter: true,
 			enableSorting: false,
 			size: 250,
+			meta: { ...getRootLinkComponentConfig() },
+			cell: (cell) => getRootLinkCellConfig(cell),
 		},
 		{
 			accessorKey: 'therapy_area',
@@ -102,6 +124,8 @@
 			enableColumnFilter: true,
 			enableSorting: false,
 			size: 250,
+			meta: { ...getRootLinkComponentConfig() },
+			cell: (cell) => getRootLinkCellConfig(cell),
 		},
 		{
 			accessorKey: 'study_date',
@@ -155,9 +179,6 @@
 			meta: {
 				renderComponent: {
 					component: Link,
-					props: {
-						getHref: (rowData) => rowData.source,
-					},
 				},
 			},
 			size: 250,
@@ -216,6 +237,7 @@
 			columnPinning={{ left: ['_action'] }}
 			sorting={[{ id: 'study_id', desc: true }]}
 			enableGlobalFilter={false}
+			enableFullView={true}
 		>
 			<div slot="table-actions-right">
 				<Button

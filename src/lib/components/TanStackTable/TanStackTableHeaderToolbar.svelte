@@ -3,6 +3,13 @@
 	import TanStackColumnVisibility from './TanStackColumnVisibility.svelte';
 	import Input from '@components/Input/Input.svelte';
 	export let table;
+
+	let allRowsFullView = false;
+
+	const toggleAllRows = () => {
+		allRowsFullView = !allRowsFullView;
+		$table.toggleAllRowsFullView();
+	};
 </script>
 
 <div class="datatable__header">
@@ -22,6 +29,16 @@
 	</div>
 	<div class="datatable__header__buttons">
 		<slot name="table-actions-right"></slot>
+		{#if $table.options.enableFullView}
+			<IconButton
+				class="material-icons"
+				title={allRowsFullView ? 'Collapse All' : 'Expand All'}
+				ripple={false}
+				on:click={toggleAllRows}
+			>
+				{allRowsFullView ? 'visibility_off' : 'visibility'}
+			</IconButton>
+		{/if}
 		<IconButton
 			class="material-icons"
 			title="Font Size"
