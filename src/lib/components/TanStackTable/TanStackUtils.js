@@ -81,6 +81,7 @@ export const getCommonPinningStyles = (column) => {
     left: ${isPinned === 'left' ? column.getStart('left') + 'px' : 'unset'};
     right: ${isPinned === 'right' ? column.getAfter('right') + 'px' : 'unset'};
     position: ${isPinned ? 'sticky' : 'relative'};
+    align-content: flex-start;
     ${isPinned ? 'z-index: 100' : ''};`;
 };
 

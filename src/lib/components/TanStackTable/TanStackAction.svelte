@@ -1,8 +1,9 @@
 <script>
 	import { Icon } from '@smui/icon-button';
 	export let actions = [];
-	export let rowData;
-	export let data;
+	export let row;
+
+	let rowData = row.original;
 </script>
 
 <div class="datatable-actions">
@@ -15,7 +16,7 @@
 						? 'mdc-icon-button--disabled'
 						: ''}"
 					title={action.title || action.iconName}
-					on:click={() => action.handler(rowData)}
+					on:click={() => action.handler(rowData, row)}
 				>
 					<div class="mdc-icon-button__ripple" />
 					{action.iconName}

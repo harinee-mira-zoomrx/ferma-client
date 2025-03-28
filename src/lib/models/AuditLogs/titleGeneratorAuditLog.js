@@ -69,16 +69,7 @@ class TitleDataGenerator {
 	handleDrugsStudies(logValues) {
 		if (logValues.drug_root_id) {
 			return { ['DRUG']: logValues.drug_root_name };
-		} else if (logValues.active_ingredient_root_id) {
-			return { ['DRUG']: logValues.active_ingredient_root_name };
-		} else if (logValues.drug_class_root_id) {
-			return { ['DRUG']: logValues.drug_class_root_name };
-		} else if (logValues.target_root_id) {
-			return { ['DRUG']: logValues.target_root_name };
-		} else if (logValues.brand_root_id) {
-			return { ['DRUG']: logValues.brand_root_name };
 		}
-
 		return {};
 	}
 

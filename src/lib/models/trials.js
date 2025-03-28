@@ -1,16 +1,12 @@
 import { destroy, get, patch, post } from '../utils/api';
 
 export async function fetchTrials(queryParams) {
-	const { responseData } = await get(
-		`/trials?${new URLSearchParams(queryParams).toString()}`
-	);
+	const { responseData } = await get(`/trials?${new URLSearchParams(queryParams).toString()}`);
 	return responseData?.data || [];
 }
 
 export async function fetchTrial(id, queryParams) {
-	const { responseData } = await get(
-		`/trials/${id}?${new URLSearchParams(queryParams).toString()}`
-	);
+	const { responseData } = await get(`/trials/${id}?${new URLSearchParams(queryParams).toString()}`);
 	return responseData || {};
 }
 
@@ -30,7 +26,6 @@ export async function deleteTrials(id) {
 }
 
 export const TRIAL_PHASES = {
-	NA: 'Not Applicable',
 	EARLY_PHASE_1: 'Early Phase 1',
 	PHASE_1: 'Phase 1',
 	PHASE_1_2: 'Phase 1 / Phase 2',
@@ -38,7 +33,7 @@ export const TRIAL_PHASES = {
 	PHASE_2_3: 'Phase 2 / Phase 3',
 	PHASE_3: 'Phase 3',
 	PHASE_4: 'Phase 4',
-};
+}
 
 export const TRIAL_STATUS = {
 	COMPLETED: 'Completed',
@@ -55,4 +50,4 @@ export const TRIAL_STATUS = {
 	APPROVED_FOR_MARKETING: 'Approved for marketing',
 	WITHHELD: 'Withheld',
 	UNKNOWN_STATUS: 'Unknown status',
-};
+}
