@@ -1,0 +1,13 @@
+.contents {
+	display: flex;
+	align-items: flex-end;
+	width: 100%;
+	flex-direction: column;
+
+	&__header-inner {
+		display: flex;
+		align-items: flex-end;
+		justify-content: flex-start;
+		gap: 20px;
+	}
+}

@@ -1,0 +1,63 @@
+.login {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-direction: column;
+	width: 100%;
+	height: 100vh;
+	background-color: #37474f;
+
+	&__container {
+		background-color: #fff;
+		padding: 35px;
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+		width: 400px;
+		border-radius: 15px;
+		gap: 20px;
+		text-align: center;
+
+		:global(input) {
+			color: black;
+
+			&::placeholder {
+				color: #c1c6cc;
+			}
+		}
+	}
+
+
+	&__header {
+		font-size: 25px;
+		color: var(--primary-color);
+		font-weight: 600;
+		display: flex;
+		column-gap: 15px;
+		align-items: center;
+
+		img {
+			height: 40px;
+		}
+	}
+
+	&__details {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
+		gap: 20px;
+		text-align: left;
+	}
+
+	&__login-btn {
+		display: flex;
+		align-self: center;
+		width: 100%;
+
+		:global(.btn--primary) {
+			width: 100%;
+		}
+	}
+}

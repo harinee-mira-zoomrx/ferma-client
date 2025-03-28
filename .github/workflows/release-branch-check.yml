@@ -1,0 +1,28 @@
+name: Ensure Release Branch PRs
+
+on:
+  pull_request:
+    branches:
+      - main # Workflow only triggers for PRs targeting the main branch.
+
+jobs:
+  check-release-branch:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout the code
+        uses: actions/checkout@v3
+
+      - name: Validate the source branch
+        run: |
+          echo "Validating the source & target branch..."
+          echo "Source Branch: ${{ github.head_ref }}"
+          echo "Target Branch: ${{ github.base_ref }}"
+
+          SOURCE_BRANCH=${{ github.head_ref }}
+          TARGET_BRANCH=${{ github.base_ref }}
+
+          # Ensure target branch is 'main' and source branch is exactly 'release'
+          if [[ "$TARGET_BRANCH" == "main" && "$SOURCE_BRANCH" != "release" ]]; then
+            echo "Error: Only the 'release' branch can be merged into 'main'!"
+          fi
+        shell: bash

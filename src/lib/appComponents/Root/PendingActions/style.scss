@@ -1,0 +1,132 @@
+.pending-actions {
+	&__title {
+		font-size: 1rem;
+		margin-bottom: 1rem;
+	}
+	&__container {
+		.pending-action {
+			margin-bottom: 2rem;
+
+			&__title {
+				font-size: 0.9rem;
+				margin-bottom: 0.5rem;
+			}
+
+			&__container {
+				border: 1px solid #d8dbdf;
+				border-radius: 6px;
+			}
+		}
+	}
+}
+.pending-action-invalidate {
+	border: 1px solid #CA5948;
+	background: #fcc9c6;
+	border-radius: 6px;
+	padding: 10px 15px;
+	width: 85%;
+
+	&__header {
+		display: flex;
+		&-title {
+			font-size: 1rem;
+		}
+		&-actions {
+			flex: 1;
+			text-align: end;
+			margin-right: 2%;
+			min-width: 160px;
+		}
+	}
+
+	&__info {
+		padding: 5px 0px;
+		font-size: 0.8rem;
+		color: #7d2727;
+
+		a {
+			color: #7d2727;
+			font-weight: 700;
+		}
+	}
+}
+
+.approve-btn,
+.reject-btn {
+	padding: 0.3rem 0.5rem;
+	border: none;
+	cursor: pointer;
+	border-radius: 6px;
+	font-weight: 500;
+}
+
+.approve-btn {
+	background-color: #14B8A6;
+	color: white;
+}
+
+.reject-btn {
+	background: #FEE2E2;
+	color: #991B1B;
+}
+
+.invalidate-reject-btn {
+	background-color: #6B7280;
+	color: white;
+}
+
+.disabled-btn {
+	background-color: #F3F4F6;
+	color: #D1D5DB;
+	cursor: not-allowed;
+}
+
+
+table {
+	width: 100%;
+
+	thead {
+		text-transform: uppercase;
+		text-align: left;
+		padding: 10px;
+		font-size: 0.8rem;
+		color: #6B7280;
+
+		.action {
+			min-width: 160px;
+		}
+	}
+
+	tbody {
+
+		tr {
+			border-top: 1px solid #d8dbdf;
+			color: #1F2937;
+		}
+
+		.info-row {
+			border-top: 0px;
+			td {
+				padding: 0px 15px 10px 15px;
+				font-size: 0.8rem;
+				color: #991B1B;
+			}
+		}
+
+		.row {
+			td {
+				padding: 10px 15px;
+			}
+		}
+
+		.row-with-info {
+			td {
+				padding: 10px 15px 0 15px;
+			}
+		}
+	}
+
+	th {
+		padding: 6px 15px;
+	}
+}

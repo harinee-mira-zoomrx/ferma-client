@@ -1,0 +1,57 @@
+.sub-menu {
+	position: relative;
+
+	&__overview {
+		display: flex;
+		column-gap: 5px;
+		align-items: center;
+		justify-content: left;
+		width: 90%;
+		height: 40px;
+		margin: auto;
+		font-size: 14px;
+		border-radius: 7px;
+		padding: 12px;
+		margin-left: -5px;
+		cursor: pointer;
+		text-decoration: none;
+		color: #fff;
+		&:hover {
+			background-color: rgb(50, 68, 79);
+		}
+	}
+
+	&__items {
+		width: 75%;
+		border: 1px solid #666;
+		background-color: rgb(38, 50, 56);
+		border-radius: 7px;
+		border-top: none;
+		border-top-left-radius: 0;
+		border-top-right-radius: 0;
+		margin: 0 auto;
+		padding-top: 5px;
+	}
+
+	.tooltip {
+		position: absolute;
+		top: 110%;
+		left: 110%;
+		transform: translateX(-10%) translateY(-120%);
+		background-color: #0160ed;
+		color: #fff;
+		padding: 5px;
+		border-radius: 3px;
+		white-space: nowrap;
+		visibility: visible;
+		opacity: 1;
+		transition: opacity 0.3s;
+		line-height: 2.5;
+		font-size: 12px;
+		font-weight: 600;
+	}
+}
+
+:global(.sub-menu__overview.active) {
+	background-color: rgb(74, 98, 110);
+}

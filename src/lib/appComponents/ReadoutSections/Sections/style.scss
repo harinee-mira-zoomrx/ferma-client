@@ -1,0 +1,88 @@
+.study-design-layout {
+  &__header {
+    font-weight: 600;
+    font-size: 16px;
+    color: #474747;
+  }
+
+  &__content {
+    padding: 15px 15px 5px 15px;
+    font-size: 14px;
+  }
+
+  .button-section {
+    display: flex;
+    flex-direction: row;
+    column-gap: 10px;
+    padding-top: 10px;
+    padding-bottom: 15px;
+  }
+
+  .textarea-section {
+    display: flex;
+    flex-direction: column;
+    row-gap: 10px;
+  }
+}
+
+.advanced-context {
+  font-size: 14px;
+
+  .advanced-context-layout {
+    padding-bottom: 15px;
+
+    &__header {
+      font-weight: 600;
+      font-size: 16px;
+      color: #474747;
+    }
+
+    &__content {
+      padding: 5px 15px 15px 15px;
+    }
+
+    &__item {
+      display: flex;
+      flex-direction: column;
+      row-gap: 10px;
+      margin-top: -10px;
+      padding-bottom: 20px;
+      padding-top: 20px;
+      border-bottom: 2px dashed #a1a1a1;
+    }
+
+    &__item_header {
+      display: flex;
+      justify-content: space-between;
+      margin-right: -10px;
+      padding-top: 5px;
+      padding-bottom: 5px;
+      align-items: end;
+    }
+
+    &__delete_icon {
+      margin-top: -10px;
+    }
+
+    &__add {
+      margin-top: 15px;
+    }
+  }
+}
+
+
+.section-header {
+    font-size: 20px;
+    font-weight: 400;
+    color: #565656;
+    text-transform: capitalize;
+    padding-bottom: 10px;
+}
+
+.action-buttons {
+  display: flex;
+  flex-direction: row;
+  column-gap: 10px;
+  justify-content: end;
+  margin-top: 10px;
+}

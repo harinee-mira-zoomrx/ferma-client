@@ -1,0 +1,73 @@
+.tooltip {
+	position: absolute;
+	font-weight: 400;
+	font-size: 12px;
+	line-height: 15px;
+	border-radius: 6px;
+	min-height: unset;
+	padding: 5px 10px;
+	box-sizing: border-box;
+	animation: tooltip 600ms ease-in-out 1;
+	z-index: 100000;
+	transform: translateX(-35%);
+	white-space: nowrap;
+	background: gray;
+	color: white;
+	text-align: center;
+
+	&--hidden {
+		display: none;
+	}
+}
+
+.tooltip-container {
+	position: relative;
+}
+
+.show-pointer::after {
+	content: '';
+	background-image: var(--icon-tooltip-pointer);
+	background-repeat: no-repeat;
+	background-size: contain;
+	width: 12px;
+	height: 10px;
+	position: absolute;
+	transform: translate(-50%, 50%);
+}
+
+.x-pos--start::after {
+	right: -20%;
+}
+.x-pos--center::after {
+	left: 50%;
+}
+.x-pos--end::after {
+	left: 20%;
+}
+.y-pos--above::after {
+	bottom: 0px;
+}
+.y-pos--below::after {
+	transform: rotateZ(180deg) translateY(50%);
+	right: 0px;
+	top: 0;
+}
+
+.y-pos--below.x-pos--center::after {
+	left: 35%;
+}
+.y-pos--below.x-pos--end::after {
+	left: 20%;
+}
+.y-pos--below.x-pos--start::after {
+	right: 20%;
+}
+
+@keyframes tooltip {
+	0% {
+		opacity: 0;
+	}
+	100% {
+		opacity: 1;
+	}
+}
